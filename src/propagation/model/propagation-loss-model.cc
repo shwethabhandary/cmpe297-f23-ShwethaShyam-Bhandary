@@ -366,32 +366,7 @@ TwoRayGroundPropagationLossModel::DoCalcRxPower(double txPowerDbm,
                                                 Ptr<MobilityModel> a,
                                                 Ptr<MobilityModel> b) const
 {
-    /*
-     * Two-Ray Ground equation:
-     *
-     * where Pt, Gt and Gr are in dBm units
-     * L, Ht and Hr are in meter units.
-     *
-     *   Pr      Gt * Gr * (Ht^2 * Hr^2)
-     *   -- =  (-------------------------)
-     *   Pt            d^4 * L
-     *
-     * Gt: tx gain (unit-less)
-     * Gr: rx gain (unit-less)
-     * Pt: tx power (dBm)
-     * d: distance (m)
-     * L: system loss
-     * Ht: Tx antenna height (m)
-     * Hr: Rx antenna height (m)
-     * lambda: wavelength (m)
-     *
-     * As with the Friis model we ignore tx and rx gain and output values
-     * are in dB or dBm
-     *
-     *                      (Ht * Ht) * (Hr * Hr)
-     * rx = tx + 10 log10 (-----------------------)
-     *                      (d * d * d * d) * L
-     */
+    
     double distance = a->GetDistanceFrom(b);
     if (distance <= m_minDistance)
     {
